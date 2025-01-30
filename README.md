@@ -26,7 +26,8 @@ Databases Supported + Language Based ORMs
 
 When cloning this repo you will receive `README.md, startup.py, and config.json`. The README contains instructions on how to use WebWeaver as well as upcoming features. `startup.py` is the python script which is used to install all frameworks, databases, plugins, and performing any other templating logic. `config.json` will store global configs based on directory for frameworks and database port/name for databases. This will track all things downloaded from WebWeaver.
 
-Important startup.py flags
+Important startup.py flags:
+
 `--add_backend`: this will prompt the user what framework they would like to use, what IP/port they would like to host it on, name of systemd service, and what directory they would like this web app to be downloaded to. This will then download the backend source code to that directory, update the config.json file, install all dependencies, and create/start a systemd service, all while logging what is happening in the terminal.
 
 `--attach_backend_to_db`: this will prompt the user for the directory of the backend, the specific database (name/port) that they would like to connect to each other. This will then download the needed source code to the backend directory, install all dependencies, and update config.json file of the backend to show there is a database attached to it so that the create_app() function knows and can update its logic.
