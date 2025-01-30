@@ -19,10 +19,33 @@ Databases Supported + Language Based ORMs
 - MongoDB
 - MySQL(future)
 
+Desktop Applications
+- Tauri/Svelte/SQLite (future)
+- Flutter/SQLite (future)
+
 - Python - SQLAlchemy
 - Rust - SeaORM
 
 ## Workflow
+
+Will host the Tauri (Rust/Svelte) source code here on the repo and then have download links for Mac/Windows/Linux in the README.md
+
+Will have a Tauri desktop application with SeaORM, SQLite, Svelte. This will give a GUI representation + the state of the different web apps / applications users have made with WebWeaver
+
+It will also allow them to easily add new templates to existing projects quickly so they can get a jumpstart on coding their website/application
+
+----------------------------------------
+Link to blog for how to self-host or use AWS EC2 in production.
+
+Link to blog about how to use mmcli and custom modem hardware + sim for sending SMS
+
+Link to blog about how to use websockets
+
+Link to blog about how to deploy production app with Tauri
+
+Link to blog about setting up GitHub so you can build and run tests on applications / websites when pushing to production
+
+----------------------------------------- BEHIND THE SCENES -----------------------------
 
 When cloning this repo you will receive `README.md, startup.py, and config.json`. The README contains instructions on how to use WebWeaver as well as upcoming features. `startup.py` is the python script which is used to install all frameworks, databases, plugins, and performing any other templating logic. `config.json` will store global configs based on directory for frameworks and database port/name for databases. This will track all things downloaded from WebWeaver.
 
