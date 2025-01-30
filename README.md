@@ -24,13 +24,18 @@ Databases Supported + Language Based ORMs
 
 ## Workflow
 
-When cloning this repo you will receive this `README.md` as well as `startup.py` file. You can run the startup file via `python startup.py --flag1 --flag2 --etc.` This list of flags currently supported is documented in this README.
+When cloning this repo you will receive `README.md, startup.py, and config.json`. The README contains instructions on how to use WebWeaver as well as upcoming features. `startup.py` is the python script which is used to install all frameworks, databases, plugins, and performing any other templating logic. `config.json` will store global configs based on directory for frameworks and database port/name for databases. This will track all things downloaded from WebWeaver.
 
-When first running the startup script the only flag which will be required is `--add_backend` for now your options well be Quart / Rust. This will download the source code needed for that backend and create a very simple API which handles GET, POST, DELETE arguments as well as serving a simple `Hello World {backend_type}` webpage at `https:<ip>:<port>`.
+Important startup.py flags
+`--add_backend`: this will prompt the user what framework they would like to use, what IP/port they would like to host it on, name of systemd service, and what directory they would like this web app to be downloaded to. This will then download the backend source code to that directory, update the config.json file, install all dependencies, and create/start a systemd service, all while logging what is happening in the terminal.
 
-The flag `--directory` to provide the script with a full path of the directory which you would like the incoming source code to be directed too.
+`--attach_backend_to_db`: this will prompt the user for the directory of the backend, the specific database (name/port) that they would like to connect to each other. This will then download the needed source code to the backend directory, install all dependencies, and update config.json file of the backend to show there is a database attached to it so that the create_app() function knows and can update its logic.
 
-While this is the only required flag you can also include flags such as `--add_database, --add_frontend, --add_plugin_x, etc.`. Each flag will download the templated source code specified and install any requirements. Each source code will come with comments to easily decipher what is going on and how the end user can expand on top of the functional template. Each argument will also update the provided config.py file with an accurate representation of a current web project given the directory it is located within. This will allow a unified list of all the WebWeaver products on your system, and it will also allow you to easily add or remove any new frameworks or plugins to a given directory and have them work as intended out of the box with no additional code required from your end.
+`--add_database`: this will prompt the user what type of database they want (async/not), database username/password/db_name. This will then install the database on their system and update the config.json file to show there is a new database on the system.
+
+`--add_frontend`: this will prompt the user for the directory to install the front end, the directory (if any) of the backend they would like to link it too. They will also be prompted for what framework they would like to use, ip/port to host frontend on, and systemd service name. This will then download the frontend source code to the specified directory, update the config.json to show there is a frontend and potentially update it to show a linked frontend and backend. It will then install all the dependencies and log everything it is doing in the terminal.
+
+`--add_plugin`: this will prompt the user what directory the backend is located which they would like to add the plugin too. It will also prompt the user for what type of plugin they would like to add. (auth/payment/messaging/logs/etc.) It will then download the needed source code, install all dependencies, and update the config.json file of the backend to show there is a new plugin attached to that backend so the create_app() function knows what to do.
 
 ## Plugins
 - Databases with optional GUI interfaces
