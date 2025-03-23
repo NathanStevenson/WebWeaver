@@ -1,0 +1,6 @@
+quart 
+quart-schema
+sqlalchemy[asyncpg]
+psycopg2-binary
+asyncio
+uvicorn
