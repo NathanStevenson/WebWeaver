@@ -10,8 +10,11 @@ def create_app(webweaver_config=None):
     app = Quart(__name__)
 
     # registers all of your top level routes / (HMTL routes), /api (JSON API routes)
+    {% if config['api'] %}
     app.register_blueprint(api.bp)
+    {% elif config['html_routes'] %}
     app.register_blueprint(html_routes.bp)
+    {% endif %}
 
     # this config file is used by WebWeaver to ensure your web app does exactly what you specified
     if webweaver_config:
@@ -30,8 +33,8 @@ app = create_app()
 # when running python app.py can optionally specify host / port to run the webserver on a specific ip:port
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--host", type=str, default="127.0.0.1", help="Host IP")
-    parser.add_argument("--port", type=int, default=8000, help="Port number")
+    parser.add_argument("--host", type=str, default="{{ config['ip'] }}", help="Host IP")
+    parser.add_argument("--port", type=int, default={{ config['port'] }}, help="Port number")
     args = parser.parse_args()
     
     # creates your Quart app and runs it with ASGI uvicorn
