@@ -13,4 +13,4 @@ This manual provides a general workflow for how to develop WebWeaver frameworks 
 - Always looking for new creative plugins. When you develop a plugin make sure to update the documentation for the framework you develop it in.
 - If possible it would be great if each plugin developed has at least one corresponding default front-end template that it goes with.
 - When developing these plugins continue to make them as modular as possible
-- Even if you are only familiar with the language you developed the plugin for, please update the other frameworks issues/documentation so we can support it across all WebWeaver supported frameworks.
+- Even if you are only familiar with the language you developed the plugin for, please update the other frameworks issues/documentation so we can support it across all WebWeaver supported frameworks. 
