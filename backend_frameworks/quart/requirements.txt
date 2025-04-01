@@ -1,6 +1,9 @@
 quart 
 quart-schema
+quart-db
 sqlalchemy[asyncpg]
 psycopg2-binary
 asyncio
 uvicorn
+asyncpg
+alembic

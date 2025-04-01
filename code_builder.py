@@ -1,4 +1,12 @@
 from jinja2 import Environment, FileSystemLoader
+import json
+import os
+
+# dictionary of list of files for each framework which need to be generated via Jinja templates
+templated_files = {
+        "quart": ["app.py.pj2", "secrets.py.j2"],
+        "rust": []
+}
 
 def generate_code(file_path, config):
     # load the templated Jinja source file
@@ -13,4 +21,23 @@ def generate_code(file_path, config):
     with open(f"{file_name}", "w") as f:
         f.write(rendered_code)
 
-    print(f"Code generated successfully for {file_name}!")
+
+if __name__ == "__main__":
+    # read the config from the file and load it in as json
+    with open("config.json", 'r') as config_file:
+        config = json.load(config_file)
+
+    # setup the overall project directory based on the config file
+    if config['overview']['project_name']:
+        os.makedirs(config['overview']['project_name'], exist_ok=True)
+        # set up the database sub-directory within the project
+        if config['overview']['database']:
+            os.makedirs(f"{config['overview']['project_name']}/{config['overview']['database']}", exist_ok=True)
+        
+        # set up the backend sub-directory within the project
+        if config['overview']['backend']:
+            os.makedirs(f"{config['overview']['project_name']}/{config['overview']['backend']}", exist_ok=True)
+        
+        # set up the frontend sub-directory within the project
+        if config['overview']['frontend']:
+            os.makedirs(f"{config['overview']['project_name']}/{config['overview']['frontend']}", exist_ok=True)
