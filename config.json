@@ -1,0 +1,26 @@
+{
+    "overview": { 
+        "project_name": "webweaver_test",
+        "database": "postgresql",
+        "backend": "quart",
+        "frontend": false
+    },
+
+    "backend": { 
+        "ip": "127.0.0.1",
+        "port": 443,
+        "api": true,
+        "html_routes": false
+    },
+
+    "database": { 
+        "username": "127.0.0.1",
+        "password": 443,
+        "hostname": true,
+        "database_name": false
+    },
+
+    "frontend": { 
+
+    }
+}
