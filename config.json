@@ -1,11 +1,35 @@
-{
-    "overview": { 
-        "project_name": "webweaver_test",
-        "database": "postgresql",
-        "backend": "quart",
-        "frontend": false
-    },
+{   
+    "notes": "dir structure contains directory structure needed; if list then it is a file. Filepath (eventually replaced once building on other machines)",
+    "notes1": "second parameter is the true if it is a Jinja file and needs the remainder of the config file to be rendered; otherwise pure copy",
 
+    "project_directory": "/home/nathan/Documents/",
+
+    "dir_structure": { 
+        "example_project": {
+            "quart": {
+                "app.py.j2": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/app.py.j2", true],
+                "secrets.py.j2": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/secrets.py.j2", true],
+                "requirments.txt": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/requirements.txt", false],
+                ".gitignore": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/.gitignore", false],
+                "api": {
+                    "__init__.py": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/api/__init__.py", false]
+                },
+                "db_interface": {
+                    "__init__.py": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/db_interface/__init__.py", false]
+                }
+            },  
+
+            "postgresql": {
+                "create_postgresql.sh": ["/home/nathan/Documents/WebWeaver/database_setup_scripts/postgresql/create_postgresql.sh", false],
+                "delete_postgresql.sh": ["/home/nathan/Documents/WebWeaver/database_setup_scripts/postgresql/create_postgresql.sh", false]
+            },
+
+            "svelte": {
+
+            }
+        }
+    },
+    
     "backend": { 
         "ip": "127.0.0.1",
         "port": 443,
@@ -14,10 +38,10 @@
     },
 
     "database": { 
-        "username": "127.0.0.1",
-        "password": 443,
-        "hostname": true,
-        "database_name": false
+        "username": "nathan",
+        "password": "pwd",
+        "hostname": "127.0.0.1",
+        "database_name": "WebWeaverTestDB"
     },
 
     "frontend": { 
