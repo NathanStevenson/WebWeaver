@@ -1,24 +1,44 @@
-from jinja2 import Environment, FileSystemLoader
+from jinja2 import Template
 import json
 import os
 
-# dictionary of list of files for each framework which need to be generated via Jinja templates
-templated_files = {
-        "quart": ["app.py.pj2", "secrets.py.j2"],
-        "rust": []
-}
+# function takes a Dict config (loaded from JSON) and builds a directory
+# if the dict contains another dict then it is a folder; if it contains a list then it needs to generate a file
+# first arg in the list is the file path it needs to copy/build. 2nd arg is if the file is a Jinja template; if so will need to build with generate_code fn
+# builds the project structure located with its base starting at project directory
+def build_directory(project_directory, project_structure, jinja_config):
+    for name, data in project_structure.items():
+        path = os.path.join(project_directory, name)
+        # if dict then make dir; recursively build next directory 
+        if isinstance(data, dict):
+            os.makedirs(path, exist_ok=True)
+            build_directory(path, data, jinja_config)
+        # if not a dir; then see whether we just need to make the file with pure copy or build with gen_code()
+        else:
+            # Jinja template generate with generate_code()
+            if (data[1] == True):
+                path = os.path.dirname(path)
+                generate_code(path, data[0], jinja_config)
+            
+            # Normal code read from template source code into the new file 
+            else:
+                with open(data[0]) as template_file:
+                    code = template_file.read()
+                with open(path, "w") as source_file:
+                    source_file.write(code)
 
-def generate_code(file_path, config):
-    # load the templated Jinja source file
-    env = Environment(loader=FileSystemLoader("."))
-    template = env.get_template(file_path)
+# function takes a file path + config and renders a Jinja template
+def generate_code(source_file_path, template_file_path, config):
+    with open(template_file_path) as template_file:
+        template = Template(template_file.read())
     
     # render the source code after passing in the needed config to build the code correctly
     rendered_code = template.render(config=config)
 
-    # write the generated file to the correct file
-    file_name = file_path.split('/')[-1][:-3]
-    with open(f"{file_name}", "w") as f:
+    # write the generated file to the correct file in the correct final directory
+    file_name = template_file_path.split('/')[-1][:-3]
+    file_path = os.path.join(source_file_path, file_name)
+    with open(file_path, "w") as f:
         f.write(rendered_code)
 
 
@@ -27,17 +47,5 @@ if __name__ == "__main__":
     with open("config.json", 'r') as config_file:
         config = json.load(config_file)
 
-    # setup the overall project directory based on the config file
-    if config['overview']['project_name']:
-        os.makedirs(config['overview']['project_name'], exist_ok=True)
-        # set up the database sub-directory within the project
-        if config['overview']['database']:
-            os.makedirs(f"{config['overview']['project_name']}/{config['overview']['database']}", exist_ok=True)
-        
-        # set up the backend sub-directory within the project
-        if config['overview']['backend']:
-            os.makedirs(f"{config['overview']['project_name']}/{config['overview']['backend']}", exist_ok=True)
-        
-        # set up the frontend sub-directory within the project
-        if config['overview']['frontend']:
-            os.makedirs(f"{config['overview']['project_name']}/{config['overview']['frontend']}", exist_ok=True)
+    # build the proper final directory by using pieces of the extracted config above
+    build_directory(config['project_directory'], config['dir_structure'], config)
