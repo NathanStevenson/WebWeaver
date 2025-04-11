@@ -1,6 +1,7 @@
 # To Do List
 
 ## Overall Project Set-Up
+* sudo apt install all the packages we need -- will need sudo permissions for apt installing hopefully reasonable
 * If HTTP keys are generated then run the necessary Quart uvicorn run command so we host HTTPS instead of HTTP
 * Later on we can have this also set up other shit like Docker, testing scripts, custom CI/CD pipelines etc
 
