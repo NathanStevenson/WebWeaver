@@ -1,6 +1,8 @@
 from jinja2 import Template
 import json
 import os
+import subprocess
+import time
 
 # function takes a Dict config (loaded from JSON) and builds a directory
 # if the dict contains another dict then it is a folder; if it contains a list then it needs to generate a file
@@ -48,4 +50,7 @@ if __name__ == "__main__":
         config = json.load(config_file)
 
     # build the proper final directory by using pieces of the extracted config above
-    build_directory(config['project_directory'], config['dir_structure'], config)
+    build_directory(config['set_up']['project_directory'], config['dir_structure'], config)
+
+    # if user wants automated setup for their system run the bash command from the dir (safest using subpr since user inputting dir name ensure used as dir)
+    subprocess.run(["bash", "project_setup_help.sh"], cwd=config['set_up']["project_directory"] + "/" + config['set_up']["project_name"])
