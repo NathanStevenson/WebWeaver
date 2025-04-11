@@ -2,14 +2,14 @@
     "notes": "dir structure contains directory structure needed; if list then it is a file. Filepath (eventually replaced once building on other machines)",
     "notes1": "second parameter is the true if it is a Jinja file and needs the remainder of the config file to be rendered; otherwise pure copy",
 
-    "project_directory": "/home/nathan/Documents/",
-
     "dir_structure": { 
         "example_project": {
             "quart": {
                 "app.py.j2": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/app.py.j2", true],
-                "secrets.py.j2": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/secrets.py.j2", true],
-                "requirments.txt": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/requirements.txt", false],
+                "secrets": {
+                    "secrets.py.j2": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/secrets.py.j2", true]
+                },
+                "requirements.txt": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/requirements.txt", false],
                 ".gitignore": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/.gitignore", false],
                 "api": {
                     "__init__.py": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/api/__init__.py", false]
@@ -26,25 +26,43 @@
 
             "svelte": {
 
-            }
+            },
+
+            "project_setup_help.sh": ["/home/nathan/Documents/WebWeaver/project_setup_help.sh.j2", true]
         }
     },
     
     "backend": { 
         "ip": "127.0.0.1",
-        "port": 443,
+        "port": 2121,
         "api": true,
-        "html_routes": false
+        "html_routes": false,
+        "framework": "quart"
     },
 
     "database": { 
         "username": "nathan",
         "password": "pwd",
         "hostname": "127.0.0.1",
-        "database_name": "WebWeaverTestDB"
+        "database_name": "WebWeaverTestDB",
+        "database_type": "postgresql"
     },
 
     "frontend": { 
+        "ip": "127.0.0.1",
+        "port": 2122,
+        "framework": "svelte"
+    },
 
+    "set_up": {
+        "project_directory": "/home/nathan/Documents/",
+        "project_name": "example_project",
+        "setup_required": true,
+        "init_git": true,
+        "install_venv": true,
+        "generate_https_cert_key": true,
+        "self_signed_key": true,
+        "lets_encrypt_signed_key": false,
+        "domain_name": "www.example.com (lets encrypt needs a valid domain for generating keys so it can dnslookup)"
     }
 }

@@ -1,10 +1,7 @@
 # To Do List
 
 ## Overall Project Set-Up
-* The build structure is done that is good
-* When building the stuff maybe have a settings/infrastructure config that can be used to set-up needed things for that project
-* For now have the infrastructre config (initialize a VENV if python based; init a git repo; pip install all the reqs into the venv)
-* Include generating the certificates for HTTPS inside this setup too if specified
+* If HTTP keys are generated then run the necessary Quart uvicorn run command so we host HTTPS instead of HTTP
 * Later on we can have this also set up other shit like Docker, testing scripts, custom CI/CD pipelines etc
 
 ## Quart
