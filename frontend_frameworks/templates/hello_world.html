@@ -3,21 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}WebWeaver Hello World{% endblock %}</title>
+    <title>WebWeaver Hello World</title>
     <!-- Favicon -->
     <link rel="icon" href="{{ url_for('static', filename='images/webweaver_logo.png') }}" type="image/x-icon">
     <!-- CSS -->
-    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> -->
-    {% block head %}{% endblock %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/hello_world.css') }}">
 </head>
 <body>
-    <!-- Logo (static image) -->
-    <h2>Database</h2>
-    <img src="{{ url_for('static', filename='images/postgresql.png') }}" alt="Logo" height="60">
-    <h2>Backend</h2>
-    <img src="{{ url_for('static', filename='images/quart.webp') }}" alt="Logo" height="60">
-    <h2>Frontend</h2>
-    <img src="{{ url_for('static', filename='images/jinja.png') }}" alt="Logo" height="60">
-    {% block content %}{% endblock %}
+    <h1>Overview of WebWeaver Project</h1>
+
+    <div id="overview-flexbox">
+        <div>
+            <h2>Database</h2>
+            <img src="{{ url_for('static', filename='images/' + database + '.png') }}" alt="Database Chosen" class="framework-images">
+        </div>
+        <div>
+            <h2>Backend</h2>
+            <img src="{{ url_for('static', filename='images/' + backend + '.png') }}" alt="Backend Chosen" class="framework-images">
+        </div>
+        <div>
+            <h2>Frontend</h2>
+            <img src="{{ url_for('static', filename='images/' + frontend + '.png') }}" alt="Frontend Chosen" class="framework-images">
+        </div>
+    </div>
+
+    <a href="/docs">Swagger UI Overview of Website Generated</a>
 </body>
 </html>
