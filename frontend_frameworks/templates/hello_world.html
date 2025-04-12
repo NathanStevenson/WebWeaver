@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}WebWeaver Hello World{% endblock %}</title>
+    <!-- Favicon -->
+    <link rel="icon" href="{{ url_for('static', filename='images/webweaver_logo.png') }}" type="image/x-icon">
+    <!-- CSS -->
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> -->
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <!-- Logo (static image) -->
+    <h2>Database</h2>
+    <img src="{{ url_for('static', filename='images/postgresql.png') }}" alt="Logo" height="60">
+    <h2>Backend</h2>
+    <img src="{{ url_for('static', filename='images/quart.webp') }}" alt="Logo" height="60">
+    <h2>Frontend</h2>
+    <img src="{{ url_for('static', filename='images/jinja.png') }}" alt="Logo" height="60">
+    {% block content %}{% endblock %}
+</body>
+</html>

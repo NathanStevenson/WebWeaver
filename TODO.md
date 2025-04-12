@@ -2,7 +2,6 @@
 
 ## Overall Project Set-Up
 * sudo apt install all the packages we need -- will need sudo permissions for apt installing hopefully reasonable
-* If HTTP keys are generated then run the necessary Quart uvicorn run command so we host HTTPS instead of HTTP
 * Later on we can have this also set up other shit like Docker, testing scripts, custom CI/CD pipelines etc
 
 ## Quart
@@ -14,9 +13,6 @@
 * Nice Hello World template with the frameworks being used + photos for all the front end (API returns same in JSON)
 * Have HTTP v HTTPS and Desktop v Mobile templates set-up
 * Figure out the rendering types later on once the project is coming together
-
-## Jinja HTML Templates
-* Get a nice set-up of Jinja HTML templates within the /frontend folder which we can use if needing to render HTML/JS statically from the backend
 
 ## Plugins
 * Start with a blog plugin for Quart (Svelte/Static HTML)
