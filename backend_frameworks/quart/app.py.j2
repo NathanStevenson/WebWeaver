@@ -1,5 +1,6 @@
-from quart import Quart, render_template
 import uvicorn
+from quart import Quart, render_template
+from quart_schema import QuartSchema, validate_request, validate_response
 
 {%- if config['backend']['api'] +%}
 import api
@@ -13,6 +14,7 @@ def create_app(webweaver_config=None):
     {%- set template_dir = config['set_up']['project_directory'] + config['set_up']['project_name'] + "/" + config['frontend']['framework'] +%}
     {%- set static_dir   = config['set_up']['project_directory'] + config['set_up']['project_name'] + "/" + config['frontend']['framework'] + "/static" +%}
     app = Quart(__name__, template_folder="{{ template_dir }}", static_folder="{{ static_dir }}")
+    QuartSchema(app)
 
     # registers all of your top level routes / (HMTL routes), /api (JSON API routes)
     {%- if config['backend']['api'] +%}
@@ -34,7 +36,7 @@ def create_app(webweaver_config=None):
     # this is the default index route; template served depends on website type + plugins chose
     @app.route("/")
     async def index():
-        return await render_template('hello_world.html')
+        return await render_template({%- if config['plugins']['hello_world'] -%} 'hello_world.html', backend="{{ config['backend']['framework'] }}", frontend="{{ config['frontend']['framework'] }}", database="{{ config["database"]["database_type"] }}" {%- endif -%})
 
     return app
 
@@ -46,5 +48,5 @@ app = create_app()
 # when running python app.py can optionally specify host / port to run the webserver on a specific ip:port
 if __name__ == "__main__":   
     # creates your Quart app and runs it with ASGI uvicorn
-    uvicorn.run("app:app", host="{{ config['backend']['ip'] }}", port={{ config['backend']['port'] }}, reload=True {%+ if config['set_up']['generate_https_cert_key'] -%} 
+    uvicorn.run("app:app", host="{{ config['backend']['ip'] }}", port={{ config['backend']['port'] }}, reload=True, timeout_graceful_shutdown=3 {%+ if config['set_up']['generate_https_cert_key'] -%} 
     , ssl_keyfile="{{ cert_path }}/secrets/priv_key.pem", ssl_certfile="{{ cert_path }}/secrets/pub_cert.pem" {%- endif +%})

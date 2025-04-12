@@ -1,0 +1,27 @@
+/* Tags Styling */
+body {
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items:center;
+}
+h2 {
+    text-align: center;
+}
+a {
+    margin-top: 5%;
+}
+
+/* ID Styling */
+#overview-flexbox {
+    display: flex; 
+    column-gap: 10%;
+}
+
+/* Class Styling */
+.framework-images {
+    height: 120px; 
+    border-radius: 10px;
+    border: 2px solid black;
+    padding: 5px;
+}
