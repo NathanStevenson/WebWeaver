@@ -1,4 +1,4 @@
-from quart import Quart
+from quart import Quart, render_template
 import uvicorn
 
 {%- if config['backend']['api'] +%}
@@ -10,7 +10,9 @@ import html_routes
 
 # returns a fully configured Quart application
 def create_app(webweaver_config=None):
-    app = Quart(__name__)
+    {%- set template_dir = config['set_up']['project_directory'] + config['set_up']['project_name'] + "/" + config['frontend']['framework'] +%}
+    {%- set static_dir   = config['set_up']['project_directory'] + config['set_up']['project_name'] + "/" + config['frontend']['framework'] + "/static" +%}
+    app = Quart(__name__, template_folder="{{ template_dir }}", static_folder="{{ static_dir }}")
 
     # registers all of your top level routes / (HMTL routes), /api (JSON API routes)
     {%- if config['backend']['api'] +%}
@@ -28,13 +30,21 @@ def create_app(webweaver_config=None):
     # @app.before_serving
     # async def before_serving():
     #     await setup_database()
-    
+
+    # this is the default index route; template served depends on website type + plugins chose
+    @app.route("/")
+    async def index():
+        return await render_template('hello_world.html')
+
     return app
 
 # Creates the Quart application (must be outside __main__ so uvicorn can use reload)
 app = create_app()
 
+{%- set cert_path = config['set_up']['project_directory'] + config['set_up']['project_name'] + "/" + config['backend']['framework'] +%}
+
 # when running python app.py can optionally specify host / port to run the webserver on a specific ip:port
 if __name__ == "__main__":   
     # creates your Quart app and runs it with ASGI uvicorn
-    uvicorn.run("app:app", host="{{ config['backend']['ip'] }}", port={{ config['backend']['port'] }}, reload=True)
+    uvicorn.run("app:app", host="{{ config['backend']['ip'] }}", port={{ config['backend']['port'] }}, reload=True {%+ if config['set_up']['generate_https_cert_key'] -%} 
+    , ssl_keyfile="{{ cert_path }}/secrets/priv_key.pem", ssl_certfile="{{ cert_path }}/secrets/pub_cert.pem" {%- endif +%})

@@ -21,10 +21,17 @@ def build_directory(project_directory, project_structure, jinja_config):
             if (data[1] == True):
                 path = os.path.dirname(path)
                 generate_code(path, data[0], jinja_config)
+
+            # if the code being copied is binary (images, etc)
+            elif (data[1] == "binary"):
+                with open(data[0], "rb") as template_file:
+                    code = template_file.read()
+                with open(path, "wb") as source_file:
+                    source_file.write(code)
             
             # Normal code read from template source code into the new file 
             else:
-                with open(data[0]) as template_file:
+                with open(data[0], "r") as template_file:
                     code = template_file.read()
                 with open(path, "w") as source_file:
                     source_file.write(code)

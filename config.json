@@ -24,8 +24,16 @@
                 "delete_postgresql.sh": ["/home/nathan/Documents/WebWeaver/database_setup_scripts/postgresql/create_postgresql.sh", false]
             },
 
-            "svelte": {
-
+            "templates": {
+                "hello_world.html": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/templates/hello_world.html", false],
+                "static": {
+                    "images": {
+                        "jinja.png": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/images/jinja.png", "binary"],
+                        "postgresql.png": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/images/postgresql.png", "binary"],
+                        "quart.webp": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/images/quart.webp", "binary"],
+                        "webweaver_logo.png": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/images/webweaver_logo.png", "binary"]
+                    }
+                }
             },
 
             "project_setup_help.sh": ["/home/nathan/Documents/WebWeaver/project_setup_help.sh.j2", true]
@@ -51,7 +59,11 @@
     "frontend": { 
         "ip": "127.0.0.1",
         "port": 2122,
-        "framework": "svelte"
+        "framework": "templates"
+    },
+
+    "plugins": {
+        "hello_world": true
     },
 
     "set_up": {
