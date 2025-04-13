@@ -6,6 +6,9 @@
 
 ## Quart
 * Get the ORM v No ORM code into the project with correct Jinja templates
+* Google + Apple + Custom Auth (/login, logout, sign up, forgot password, User class with username/email/hashed password) in DB
+* Admin Dashboard + RBAC
+* Move the hello_world page to a /overview and link it to the home page of everything. For a simple hello_world site that will be the default home page so it is fine
 * Incorporate Threadpool into the base quart set-up
 
 ## SvelteKit

@@ -8,5 +8,5 @@ bp = quart.Blueprint('api', __name__, url_prefix="/api")
 
 # All routes served under "/api"
 @bp.get('/hello_world')
-async def index():
+async def hello_world():
     return {"message": "Hello World from API!", "hint": "Quart formats dictionaries returns to proper JSON args (cool!)"}
