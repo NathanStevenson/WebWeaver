@@ -11,4 +11,4 @@ class User(BaseModel):
 
     user_name: Mapped[str] = mapped_column()
     email: Mapped[str] = mapped_column(unique=True)
-    hashed_password
+    # hashed_password; profile_image; posts; messages; items; payment method; misc items -- all should be optional (this will need to be rendered by jinja with fields based on config given)
