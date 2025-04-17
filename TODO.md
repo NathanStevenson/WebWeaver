@@ -13,7 +13,8 @@
 
 * Google + Apple + Custom Auth (/login, logout, sign up, forgot password, User class with username/email/hashed password) in DB
 * Admin Dashboard + RBAC
-* Move the hello_world page to a /overview and link it to the home page of everything. For a simple hello_world site that will be the default home page so it is fine
+* Restyle so modern --> can find the overview in the settings/user profile dropdown. Click Overview to be taken to that page. Include in main README how to find sitemap quickly
+* generating configs for specific website types (blogs, hello world, api, user auth, messaging, shopping, payments, websockets/streaming)"
 * Incorporate Threadpool into the base quart set-up
 
 ## SvelteKit
