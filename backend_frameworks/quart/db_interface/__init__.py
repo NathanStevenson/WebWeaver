@@ -1,6 +1,6 @@
 from sqlalchemy.ext.asyncio import AsyncSession, AsyncEngine, create_async_engine, async_sessionmaker
 from sqlalchemy.orm import declarative_base
-from secrets import DATABASE_URL
+from quart.secrets.secrets import DATABASE_URL
 
 # Declarative Base provides a simple way to define DB Tables as classes in Python
 Base = declarative_base()

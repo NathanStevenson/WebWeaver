@@ -7,7 +7,8 @@
             "quart": {
                 "app.py.j2": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/app.py.j2", true],
                 "secrets": {
-                    "secrets.py.j2": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/secrets.py.j2", true]
+                    "secrets.py.j2": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/secrets/secrets.py.j2", true],
+                    "__init__.py": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/secrets/__init__.py", false]
                 },
                 "requirements.txt": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/requirements.txt", false],
                 ".gitignore": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/.gitignore", false],
@@ -16,7 +17,8 @@
                 },
                 "db_interface": {
                     "__init__.py": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/db_interface/__init__.py", false]
-                }
+                },
+                "__init__.py": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/__init__.py", false]
             },  
 
             "postgresql": {

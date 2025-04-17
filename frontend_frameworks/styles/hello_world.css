@@ -5,11 +5,16 @@ body {
     justify-content: center; 
     align-items:center;
 }
+h1 {
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+}
 h2 {
     text-align: center;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
 }
 a {
     margin-top: 5%;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
 }
 
 /* ID Styling */
