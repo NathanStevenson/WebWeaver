@@ -5,7 +5,7 @@
     "dir_structure": { 
         "example_project": {
             "quart_project": {
-                "app.py.j2": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/app_factory.py.j2", true],
+                "app_factory.py.j2": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/app_factory.py.j2", true],
                 "secrets": {
                     "secrets.py.j2": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/secrets/secrets.py.j2", true],
                     "__init__.py": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/secrets/__init__.py", false]
@@ -13,10 +13,13 @@
                 "requirements.txt": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/requirements.txt", false],
                 ".gitignore": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/.gitignore", false],
                 "api": {
-                    "__init__.py": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/api/__init__.py", false]
+                    "__init__.py": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/api/__init__.py", false],
+                    "user_routes.py": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/api/user_routes.py", false]
                 },
                 "db_interface": {
-                    "__init__.py": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/db_interface/__init__.py", false]
+                    "__init__.py": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/db_interface/__init__.py", false],
+                    "base_model.py": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/db_interface/base_model.py", false],
+                    "user_model.py": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/db_interface/user_model.py", false]
                 },
                 "__init__.py": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/__init__.py", false],
                 "run_server.py": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/run_server.py.j2", true]
@@ -51,7 +54,7 @@
         "port": 2121,
         "api": true,
         "html_routes": false,
-        "name": "quart"
+        "name": "quart_project"
     },
 
     "database": { 

@@ -3,8 +3,10 @@ import quart
 bp = quart.Blueprint('api', __name__, url_prefix="/api")
 
 # Import all related api files
+from . import user_routes
 
 # Register all related api blueprints
+bp.register_blueprint(user_routes.bp)
 
 # All routes served under "/api"
 @bp.get('/hello_world')
