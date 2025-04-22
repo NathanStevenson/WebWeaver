@@ -53,7 +53,7 @@ def generate_code(source_file_path, template_file_path, config):
 
 if __name__ == "__main__":
     # read the config from the file and load it in as json
-    with open("hello_world_config.json", 'r') as config_file:
+    with open("/home/nathan/Documents/WebWeaver/authentication_config.json", 'r') as config_file:
         config = json.load(config_file)
 
     # build the proper final directory by using pieces of the extracted config above

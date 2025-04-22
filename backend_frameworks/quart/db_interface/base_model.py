@@ -2,7 +2,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, delete, update, Column, DateTime
 from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy.sql import func
-from db_interface import Base
+
+from quart_project.db_interface import Base
 
 # abstract parent class to provide default fields + helper functions to all DB models which inherit this
 class BaseModel(Base):

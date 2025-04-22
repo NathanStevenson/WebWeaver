@@ -1,8 +1,8 @@
 import quart
 from quart import request
 
-from db_interface.user_model import User
-from db_interface import db_interface
+from quart_project.db_interface.user_model import User
+from quart_project.db_interface import db_interface
 
 bp = quart.Blueprint('users', __name__, url_prefix="/users")
 

@@ -1,4 +1,5 @@
 from quart_project import app_factory
+import uvicorn
 
 # Creates the Quart application (must be outside __main__ so uvicorn can use reload)
 app = app_factory.create_app()
@@ -8,5 +9,5 @@ app = app_factory.create_app()
 # when running python app.py can optionally specify host / port to run the webserver on a specific ip:port
 if __name__ == "__main__":   
     # creates your Quart app and runs it with ASGI uvicorn
-    uvicorn.run("app:app", host="{{ config['backend']['ip'] }}", port={{ config['backend']['port'] }}, reload=True, timeout_graceful_shutdown=3 {%+ if config['set_up']['generate_https_cert_key'] -%} 
+    uvicorn.run("run_server:app", host="{{ config['backend']['ip'] }}", port={{ config['backend']['port'] }}, reload=True, timeout_graceful_shutdown=3 {%+ if config['set_up']['generate_https_cert_key'] -%} 
     , ssl_keyfile="{{ cert_path }}/secrets/priv_key.pem", ssl_certfile="{{ cert_path }}/secrets/pub_cert.pem" {%- endif +%})

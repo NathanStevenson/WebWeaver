@@ -21,13 +21,12 @@
                     "base_model.py": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/db_interface/base_model.py", false],
                     "user_model.py": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/db_interface/user_model.py", false]
                 },
-                "__init__.py": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/__init__.py", false],
-                "run_server.py": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/run_server.py.j2", true]
+                "__init__.py": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/__init__.py", false]
             },  
 
             "postgresql": {
-                "create_postgresql.sh": ["/home/nathan/Documents/WebWeaver/database_setup_scripts/postgresql/create_postgresql.sh", false],
-                "delete_postgresql.sh": ["/home/nathan/Documents/WebWeaver/database_setup_scripts/postgresql/create_postgresql.sh", false]
+                "create_postgresql.sh": ["/home/nathan/Documents/WebWeaver/database_setup_scripts/postgresql/create_postgresql.sh.j2", true],
+                "delete_postgresql.sh": ["/home/nathan/Documents/WebWeaver/database_setup_scripts/postgresql/delete_postgresql.sh.j2", true]
             },
 
             "jinja": {
@@ -45,7 +44,8 @@
                 }
             },
 
-            "project_setup_help.sh": ["/home/nathan/Documents/WebWeaver/project_setup_help.sh.j2", true]
+            "project_setup_help.sh": ["/home/nathan/Documents/WebWeaver/project_setup_help.sh.j2", true],
+            "run_backend_server.py": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/run_server.py.j2", true]
         }
     },
     
@@ -60,8 +60,8 @@
     "database": { 
         "username": "nathan",
         "password": "pwd",
-        "hostname": "127.0.0.1",
-        "database_name": "WebWeaverTestDB",
+        "hostname": "localhost",
+        "database_name": "webweavertestdb",
         "name": "postgresql"
     },
 

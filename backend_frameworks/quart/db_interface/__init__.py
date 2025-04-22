@@ -1,6 +1,6 @@
 from sqlalchemy.ext.asyncio import AsyncSession, AsyncEngine, create_async_engine, async_sessionmaker
 from sqlalchemy.orm import declarative_base
-from quart.secrets.secrets import DATABASE_URL
+from quart_project.secrets.secrets import DATABASE_URL
 
 # Declarative Base provides a simple way to define DB Tables as classes in Python
 Base = declarative_base()
@@ -13,7 +13,7 @@ class DatabaseInterface:
         # Factory for database sessions; session uses the Engine to interact with the database from within the Session
         self.session_factory = async_sessionmaker(self.engine, expire_on_commit=False, class_=AsyncSession)
 
-    # when initializing the db create all the tables which inherit from declarative_base
+    # when initializing the db create all the tables which inherit from declarative_base; if the db already exists use that and do not recreate it
     async def init_db(self):
         async with self.engine.begin() as connection:
             await connection.run_sync(Base.metadata.create_all)

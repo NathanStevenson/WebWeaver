@@ -1,6 +1,6 @@
 #!/bin/bash
-DB_USER=$1
-DB_NAME=$2
+DB_USER={{ config['database']['username'] }}
+DB_NAME={{ config['database']['database_name'] }}
 
 # Drop the database
 sudo -u postgres psql -c "DROP DATABASE IF EXISTS $DB_NAME;"

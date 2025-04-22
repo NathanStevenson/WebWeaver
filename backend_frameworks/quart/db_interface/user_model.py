@@ -1,7 +1,8 @@
-from base_model import BaseModel
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, delete, update, Column, DateTime
 from sqlalchemy.orm import Mapped, mapped_column
+
+from .base_model import BaseModel
 
 class User(BaseModel):
     __tablename__ = "users"
