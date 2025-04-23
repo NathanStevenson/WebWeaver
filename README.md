@@ -41,4 +41,4 @@ WebWeaver is beginning its development with Quart server statically rendering Ji
 - [] Personal Resume Website
 - [] Analytics Dashboard with Grafana
 - [] Booking and Scheduling Events
-- [] Social Media like with posts + comments 
+- [] Social Media like with posts + comments
