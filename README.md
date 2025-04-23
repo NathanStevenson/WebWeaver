@@ -13,32 +13,32 @@ Before developing familiarize yourself with Jinja (.j2) templates and their rend
 WebWeaver is beginning its development with Quart server statically rendering Jinja HTML + CSS templates to get the project started. Once this is finished, and before releasing 1.0 we will have support for Quart/Rust, Svelte/Jinja, PostgreSQL/MongoDB. If you would like to help with development please read the dev_manual and select a task from the TODO.md, or choose any of the not done tasks below which interest you.
 
 ## Plugins for each Framework
-[x] Initialize a Git Repo in the Directory Automatically
-[x] Generate PostgreSQL bash scripts such that the user can easily create/delete new DBs (these are auto connected to by Quart)
-[x] Generate HTTPS keys for self signed HTTPS sites
-[x] Hello World Example with Tabs / Sitemap Overview
-[x] Database hooked up with SQLAlchemy have working example of (add, get, edit, delete) with Base + User class (and API routes hooked up)
-[] Have a nav bar or side bar depending on web or mobile
-[] User Authentication + Profiles (login, logout, edit profile, edit password, sign up, forgot password, delete account, etc)
-[] Admin Dashboard + RBAC
-[] Websockets
-[] Payment + Subscription System
-[] Shopping Cart
-[] Email Notifications (notify, reset password, 2FA)
-[] File Uploading + Thumbail Generation
-[] Generate API Keys + Have API Throttling / Rate Limit
-[] Threadpools - for long running sync functions
-[] Scheduled Tasks with Cron Jobs
-[] Customized Logging
-[] Github Action; CI/CD pipeline auto generated
-[] Generate HTTPS keys given a website domain provided via LetsEncrypt
+- [x] Initialize a Git Repo in the Directory Automatically
+- [x] Generate PostgreSQL bash scripts such that the user can easily create/delete new DBs (these are auto connected to by Quart)
+- [x] Generate HTTPS keys for self signed HTTPS sites
+- [x] Hello World Example with Tabs / Sitemap Overview
+- [x] Database hooked up with SQLAlchemy have working example of (add, get, edit, delete) with Base + User class (and API routes hooked up)
+- [] Have a nav bar or side bar depending on web or mobile
+- [] User Authentication + Profiles (login, logout, edit profile, edit password, sign up, forgot password, delete account, etc)
+- [] Admin Dashboard + RBAC
+- [] Websockets
+- [] Payment + Subscription System
+- [] Shopping Cart
+- [] Email Notifications (notify, reset password, 2FA)
+- [] File Uploading + Thumbail Generation
+- [] Generate API Keys + Have API Throttling / Rate Limit
+- [] Threadpools - for long running sync functions
+- [] Scheduled Tasks with Cron Jobs
+- [] Customized Logging
+- [] Github Action; CI/CD pipeline auto generated
+- [] Generate HTTPS keys given a website domain provided via LetsEncrypt
 
 ## Fullstack Website Templates (completely functional)
-[] Blogging
-[] Messaging + Video Chat + Voice Call
-[] End to End encryption with Web Crypto API + Indexed DB
-[] Shopping page with payment + cart
-[] Personal Resume Website
-[] Analytics Dashboard with Grafana
-[] Booking and Scheduling Events
-[] Social Media like with posts + comments 
+- [] Blogging
+- [] Messaging + Video Chat + Voice Call
+- [] End to End encryption with Web Crypto API + Indexed DB
+- [] Shopping page with payment + cart
+- [] Personal Resume Website
+- [] Analytics Dashboard with Grafana
+- [] Booking and Scheduling Events
+- [] Social Media like with posts + comments 
