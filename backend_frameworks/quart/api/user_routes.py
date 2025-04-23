@@ -10,17 +10,17 @@ bp = quart.Blueprint('users', __name__, url_prefix="/users")
 @bp.post("/users")
 async def create_user():
     data = await request.get_json()
-    name = data.get("name")
+    user_name = data.get("user_name")
     email = data.get("email")
 
-    if not name or not email:
-        return {"error": "Name and email required"}, 400
+    if not user_name or not email:
+        return {"error": "user_name and email required"}, 400
 
-    user = User(name=name.strip(), email=email.lower())  # Transform input
+    user = User(user_name=user_name.strip(), email=email.lower())  # Transform input
     async with db_interface.create_session() as session:
         try:
             user = await User.add(session, user)
-            return {"id": user.id, "name": user.name, "email": user.email}, 201
+            return user.to_dict()
         except Exception as e:
             return {"error": str(e)}, 500
 
@@ -34,14 +34,14 @@ async def update_user(user_id):
             return {"error": "User not found"}, 404
 
         # Update fields with validation/transformation
-        if "name" in data:
-            user.name = data["name"].strip()
+        if "user_name" in data:
+            user.user_name = data["user_name"].strip()
         if "email" in data:
             user.email = data["email"].lower()
 
         try:
             user = await User.edit(session, user)
-            return {"message": "User updated", "id": user.id}
+            return user.to_dict()
         except Exception as e:
             return {"error": str(e)}, 500
 
@@ -66,10 +66,11 @@ async def get_user(user_id):
         user = await User.get_by_id(session, user_id)
         if not user:
             return {"error": "User not found"}, 404
-        return {user.name, user.email}
+        return user.to_dict()
 
 
 @bp.get("/users")
 async def get_users():
     async with db_interface.create_session() as session:
-        return await User.get_all(session)
+        all_users = await User.get_all(session)
+        return list(map(lambda user: user.to_dict(), all_users))

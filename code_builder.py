@@ -2,7 +2,7 @@ from jinja2 import Template
 import json
 import os
 import subprocess
-import time
+import sys
 
 # function takes a Dict config (loaded from JSON) and builds a directory
 # if the dict contains another dict then it is a folder; if it contains a list then it needs to generate a file
@@ -53,7 +53,7 @@ def generate_code(source_file_path, template_file_path, config):
 
 if __name__ == "__main__":
     # read the config from the file and load it in as json
-    with open("/home/nathan/Documents/WebWeaver/authentication_config.json", 'r') as config_file:
+    with open(sys.argv[1], 'r') as config_file:
         config = json.load(config_file)
 
     # build the proper final directory by using pieces of the extracted config above

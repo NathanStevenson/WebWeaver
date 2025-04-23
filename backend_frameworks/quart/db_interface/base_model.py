@@ -1,7 +1,7 @@
 from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy import select, delete, update, Column, DateTime
+from sqlalchemy import select, Column, DateTime
 from sqlalchemy.orm import Mapped, mapped_column
-from sqlalchemy.sql import func
+from datetime import datetime
 
 from quart_project.db_interface import Base
 
@@ -11,7 +11,7 @@ class BaseModel(Base):
 
     # all classes have an ID primary key which is auto incremented, and a time_updated field which will auto update when row is updated
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    time_updated = Column(DateTime(timezone=True), onupdate=func.now())
+    time_updated = Column(DateTime(timezone=True))
 
     # session needed for all below functions: session is similar to a connection
     # connection does the work of executing SQL Query with some added control features such as commit/rollback: raw SQL
@@ -33,6 +33,7 @@ class BaseModel(Base):
     @classmethod
     async def add(cls, session: AsyncSession, obj):
         session.add(obj)
+        obj.time_updated = datetime.now()
         # commit() will commit the session in progress; obj is still attached to the session and will be until the session is closed
         await session.commit()
         await session.refresh(obj)
@@ -42,6 +43,7 @@ class BaseModel(Base):
     # thus get your object you want to edit. obj.field_name = new_val. Then on next session flush (commit) the DB will be updated with all changes
     @classmethod
     async def edit(cls, session: AsyncSession, obj):
+        obj.time_updated = datetime.now()
         await session.commit()
         await session.refresh(obj)
         return obj
@@ -51,6 +53,21 @@ class BaseModel(Base):
     async def delete(cls, session: AsyncSession, obj):
         await session.delete(obj)
         await session.commit()
+
+    # converts the class to a dictionary so it can be easily returned by Quart
+    def to_dict(self):
+        result = {}
+        for key, value in vars(self).items():
+            # skip private attributes
+            if key.startswith("_"):
+                continue
+            # convert datetime attributes to iso so they are json serializable
+            if isinstance(value, datetime):
+                result[key] = value.isoformat()
+            # otherwise just simply append
+            else:
+                result[key] = value
+        return result
 
     # dev notes
     # python **kwargs is just stringing out the remaining keyword args passed in --> then making a class with them (not good) - want to pass in an obj

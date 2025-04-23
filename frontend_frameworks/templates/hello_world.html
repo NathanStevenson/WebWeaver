@@ -3,14 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebWeaver Hello World</title>
+    <title>WebWeaver Hello World Template</title>
     <!-- Favicon -->
     <link rel="icon" href="{{ url_for('static', filename='images/webweaver_logo.png') }}" type="image/x-icon">
     <!-- CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/hello_world.css') }}">
 </head>
 <body>
-    <h1>Overview of WebWeaver Project</h1>
+    <div id="header">
+        <div>WebWeaver Hello World</div>
+        <img src="{{ url_for('static', filename='images/webweaver_logo.png') }}" alt="WebWeaver Logo">
+        {% for tab in tabs %}
+            <div class="nav-bar-tab">{{ tab }}</div>
+        {% endfor %}
+    </div>
 
     <div id="overview-flexbox">
         <div>

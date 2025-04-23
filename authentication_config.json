@@ -35,7 +35,7 @@
                     "images": {
                         "jinja.png": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/images/jinja.png", "binary"],
                         "postgresql.png": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/images/postgresql.png", "binary"],
-                        "quart.png": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/images/quart.png", "binary"],
+                        "quart_project.png": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/images/quart_project.png", "binary"],
                         "webweaver_logo.png": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/images/webweaver_logo.png", "binary"]
                     },
                     "styles": {

@@ -3,7 +3,9 @@ body {
     display: flex; 
     flex-direction: column; 
     justify-content: center; 
-    align-items:center;
+    align-items: center;
+    /* dark mode by default uses this dark gray */
+    background-color: #121212;
 }
 h1 {
     font-family: Roboto, Helvetica, Arial, sans-serif;
