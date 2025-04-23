@@ -5,10 +5,8 @@
 * Later on we can have this also set up other shit like Docker, testing scripts, custom CI/CD pipelines etc
 
 ## Quart
-* Finish getting the DB working; right now we run the command then they install their database and then run with run_server.py. Ensure this works properly with curls to get, edit, delete, the users in the DB
 * Restyle the home page (dark mode default; tabs array which differs based on plugins for nav bar; either top or side nav bar; webweaver image on left nav bar; tabs; (login / settings wheel / cart) right side)
 * Once organized get the project dir structure a little cleaner so it is more scalable. Begin designing the tabs for the Hello World and the User Auth sites
-
 
 
 * Google + Apple + Custom Auth (/login, logout, sign up, forgot password, User class with username/email/hashed password) in DB

@@ -7,7 +7,7 @@ from quart_project.db_interface import db_interface
 bp = quart.Blueprint('users', __name__, url_prefix="/users")
 
 # replace with pydantic schema validation
-@bp.post("/users")
+@bp.post("")
 async def create_user():
     data = await request.get_json()
     user_name = data.get("user_name")
@@ -25,7 +25,7 @@ async def create_user():
             return {"error": str(e)}, 500
 
 
-@bp.put("/users/<int:user_id>")
+@bp.put("<int:user_id>")
 async def update_user(user_id):
     data = await request.get_json()
     async with db_interface.create_session() as session:
@@ -46,7 +46,7 @@ async def update_user(user_id):
             return {"error": str(e)}, 500
 
 
-@bp.delete("/users/<int:user_id>")
+@bp.delete("<int:user_id>")
 async def delete_user(user_id):
     async with db_interface.create_session() as session:
         user = await User.get_by_id(session, user_id)
@@ -60,7 +60,7 @@ async def delete_user(user_id):
             return {"error": str(e)}, 500
         
 
-@bp.get("/users/<int:user_id>")
+@bp.get("<int:user_id>")
 async def get_user(user_id):
     async with db_interface.create_session() as session:
         user = await User.get_by_id(session, user_id)
@@ -69,7 +69,7 @@ async def get_user(user_id):
         return user.to_dict()
 
 
-@bp.get("/users")
+@bp.get("")
 async def get_users():
     async with db_interface.create_session() as session:
         all_users = await User.get_all(session)
