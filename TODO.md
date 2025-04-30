@@ -5,7 +5,7 @@
 * Later on we can have this also set up other shit like Docker, testing scripts, custom CI/CD pipelines etc
 
 ## Quart
-* Restyle the home page (dark mode default; tabs array which differs based on plugins for nav bar; either top or side nav bar; webweaver image on left nav bar; tabs; (login / settings wheel / cart) right side)
+* Login / Sign Up / Contact on the far right
 * Once organized get the project dir structure a little cleaner so it is more scalable. Begin designing the tabs for the Hello World and the User Auth sites
 
 
