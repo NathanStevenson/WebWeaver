@@ -3,10 +3,14 @@ import quart
 bp = quart.Blueprint('api', __name__, url_prefix="/api")
 
 # Import all related api files
+{%- if config['plugins']['authentication'] +%}
 from . import user_routes
+{% endif %}
 
 # Register all related api blueprints
+{%- if config['plugins']['authentication'] +%}
 bp.register_blueprint(user_routes.bp)
+{% endif %}
 
 # All routes served under "/api"
 @bp.get('/hello_world')

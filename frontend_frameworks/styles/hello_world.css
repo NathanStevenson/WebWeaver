@@ -1,34 +1,63 @@
 /* Tags Styling */
 body {
-    display: flex; 
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: center;
     /* dark mode by default uses this dark gray */
     background-color: #121212;
-}
-h1 {
     font-family: Roboto, Helvetica, Arial, sans-serif;
+    color: white;
+    margin: 0px;
 }
 h2 {
     text-align: center;
-    font-family: Roboto, Helvetica, Arial, sans-serif;
-}
-a {
-    margin-top: 5%;
-    font-family: Roboto, Helvetica, Arial, sans-serif;
 }
 
 /* ID Styling */
 #overview-flexbox {
     display: flex; 
     column-gap: 10%;
+    justify-content: center;
+    width: 100vw;
+    margin-top: 10vh;
+}
+
+#header{
+    display: flex; 
+    justify-content: flex-start;
+    align-items: center;
+    width: 100vw;
+    background-color: black;
+}
+
+#image-logo {
+    max-height: 7vh;
+}
+
+#logo-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: 5vw;
 }
 
 /* Class Styling */
 .framework-images {
-    height: 120px; 
+    width: 15vw; 
     border-radius: 10px;
-    border: 2px solid black;
+    border: 3px solid rgba(40, 40, 40, 10);
     padding: 5px;
+}
+
+.nav-bar-tab {
+    font-weight: bold;
+    min-width: fit-content;
+    padding: 2vh 1vw;
+    border-radius: 10px;
+    display: block;
+    color: white;
+    text-decoration: none;
+}
+
+.nav-bar-tab:hover {
+    cursor: pointer;
+    background-color: rgba(40, 40, 40, 10); 
+    text-decoration: underline;
 }

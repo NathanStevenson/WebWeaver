@@ -13,7 +13,7 @@
                 "requirements.txt": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/requirements.txt", false],
                 ".gitignore": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/.gitignore", false],
                 "api": {
-                    "__init__.py": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/api/__init__.py", false],
+                    "__init__.py": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/api/__init__.py.j2", true],
                     "user_routes.py": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/api/user_routes.py", false]
                 },
                 "db_interface": {
@@ -72,7 +72,8 @@
     },
 
     "plugins": {
-        "hello_world": true
+        "hello_world": true,
+        "authentication": true
     },
 
     "set_up": {

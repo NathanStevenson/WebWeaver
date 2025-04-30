@@ -19,7 +19,7 @@ def create_app(webweaver_config=None):
 
     # tabs which will be displayed either in the nav bar or the side bar   
     {%- if config['plugins']['hello_world'] +%}
-    tabs = ["Overview", "Empty Tab"]    
+    tabs = ["Overview"]    
     {%- endif +%}
 
     # registers all of your top level routes / (HMTL routes), /api (JSON API routes)

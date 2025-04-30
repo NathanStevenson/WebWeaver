@@ -11,10 +11,16 @@
 </head>
 <body>
     <div id="header">
-        <div>WebWeaver Hello World</div>
-        <img src="{{ url_for('static', filename='images/webweaver_logo.png') }}" alt="WebWeaver Logo">
+        <div id="logo-container">
+            <img src="{{ url_for('static', filename='images/webweaver_logo.png') }}" alt="WebWeaver Logo" id="image-logo">
+            <div class="nav-bar-tab">WebWeaver</div>
+        </div>
         {% for tab in tabs %}
-            <div class="nav-bar-tab">{{ tab }}</div>
+            {% if tab == 'Overview' %}
+                <a class="nav-bar-tab" href="/docs">{{ tab }}</a>
+            {% else %}
+                <a class="nav-bar-tab" href="/{{ tab }}">{{ tab }}</a>
+            {% endif %}
         {% endfor %}
     </div>
 
@@ -32,7 +38,5 @@
             <img src="{{ url_for('static', filename='images/' + frontend + '.png') }}" alt="Frontend Chosen" class="framework-images">
         </div>
     </div>
-
-    <a href="/docs">Swagger UI Overview of Website Generated</a>
 </body>
 </html>
