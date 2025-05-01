@@ -1,0 +1,25 @@
+from quart import Blueprint, render_template, render_template_string
+
+bp = Blueprint('html_routes', __name__, url_prefix="/")
+
+# Import all related api files
+
+# Register all related api blueprints
+
+# All routes served under "/"
+
+    # this is the default index route; template served depends on website type + plugins chose; move this to html_routes bp - bp can have same url_prefix if different names
+@bp.route("")
+async def index():
+    tabs = []
+    # tabs which will be displayed either in the nav bar or the side bar   
+    {%- if config['plugins']['hello_world'] +%}
+    tabs += "Overview"
+    {%- if config['plugins']['authentication'] +%}
+    tabs += "Private"
+    {%- endif +%}
+    return await render_template('index.html', backend="{{ config['backend']['name'] }}", frontend="{{ config['frontend']['name'] }}", database="{{ config["database"]["name"] }}", tabs=tabs)
+
+@bp.get('hello_world')
+async def index():
+    return await render_template_string("<div>Hello World</div>")

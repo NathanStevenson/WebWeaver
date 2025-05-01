@@ -2,16 +2,19 @@
 
 ## Overall Project Set-Up
 * sudo apt install all the packages we need -- will need sudo permissions for apt installing hopefully reasonable
-* Later on we can have this also set up other shit like Docker, testing scripts, custom CI/CD pipelines etc
+* Later on we can have this also set up Docker, testing scripts, custom CI/CD pipelines etc
 
 ## Quart
-* Login / Sign Up / Contact on the far right
-* Once organized get the project dir structure a little cleaner so it is more scalable. Begin designing the tabs for the Hello World and the User Auth sites
+* Next Tasks: Add Login / Sign Up / Dark Mode buttons; Add Login / Sign Up / Unauthorized Pages (90 min)
+* Make the header be an importable template to include it at the top of every other template (10 min) - base.html and then it has {% block content %} in it. The rest extend base.html and define block content
+* Hook up the index HTML routes inside that folder properly and get the authentication_config.json to match accordingly (30 min)
+* Test new Custom Login to make sure it works; add the bearer mode Quart Auth (120 min)
+* Make the private page display personal information about the user (15 min)
+* Implement Google OAuth, Apple OAuth, GitHub OAuth, (look into JWT token support - look into why JWT better than basic Quart Auth - seems like better for scale??) (120 min)
+* Implement a few more useful routes: Forgot password, Change Password, Profile Routes, Editing Profile, Emailing user with 2FA code to verify account before adding users (120 min)
 
 
-* Google + Apple + Custom Auth (/login, logout, sign up, forgot password, User class with username/email/hashed password) in DB
 * Admin Dashboard + RBAC
-* Restyle so modern --> can find the overview in the settings/user profile dropdown. Click Overview to be taken to that page. Include in main README how to find sitemap quickly
 * generating configs for specific website types (blogs, hello world, api, user auth, messaging, shopping, payments, websockets/streaming)"
 * Incorporate Threadpool into the base quart set-up
 
