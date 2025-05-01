@@ -31,8 +31,8 @@ async def sign_up_form():
 @bp.post("sign_up")
 async def process_sign_up(data: schemas.UserSignup):
     async with db_interface.create_session() as session:
-        email_exists = User.get_user_by_email(session, data.email)
-        if email_exists is not None:
+        user_exists = User.get_user_by_email(session, data.email)
+        if user_exists is not None:
             return {"error_msg": f"Email already exists for {data.email}. Try logging in or signing up with another email"}
         else:
             # salt + hash the incoming password via bcrypt; create a new user; add it to SQLAlchemy session; put it in DB
