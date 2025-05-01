@@ -24,7 +24,6 @@ def create_app(webweaver_config=None):
     {%- if config['plugins']['authentication'] +%}
     # Custom Quart Authentication; Standard Web Based and Bearer API Based
     # Quart-Auth Documentation: https://quart-auth.readthedocs.io/en/latest/tutorials/quickstart.html
-    from quart_auth import AuthManager
     app.secret_key = app_secret_key
     AuthManager(app)
     {%- endif +%}
