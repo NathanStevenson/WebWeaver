@@ -18,6 +18,7 @@ WebWeaver is beginning its development with Quart server statically rendering Ji
 - [x] Generate HTTPS keys for self signed HTTPS sites
 - [x] Hello World Example with Tabs / Sitemap Overview
 - [x] Database hooked up with SQLAlchemy have working example of (add, get, edit, delete) with Base + User class (and API routes hooked up)
+- [X] Dark / Light Mode
 - [] Have a nav bar or side bar depending on web or mobile
 - [] User Authentication + Profiles (login, logout, edit profile, edit password, sign up, forgot password, delete account, etc)
 - [] Admin Dashboard + RBAC

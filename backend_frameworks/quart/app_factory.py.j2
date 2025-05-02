@@ -10,7 +10,7 @@ from quart_project import api
 from quart_project import html_routes
 {%- endif +%}
 {%- if config['plugins']['authentication'] +%}
-from quart_auth import AuthManager
+from quart_auth import QuartAuth
 from quart_project.secrets.secrets import app_secret_key
 {%- endif +%}
 
@@ -25,7 +25,7 @@ def create_app(webweaver_config=None):
     # Custom Quart Authentication; Standard Web Based and Bearer API Based
     # Quart-Auth Documentation: https://quart-auth.readthedocs.io/en/latest/tutorials/quickstart.html
     app.secret_key = app_secret_key
-    AuthManager(app)
+    QuartAuth(app)
     {%- endif +%}
 
     # registers all of your top level routes / (HMTL routes), /api (JSON API routes)

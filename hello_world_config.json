@@ -29,6 +29,7 @@
 
             "jinja": {
                 "index.html": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/templates/index.html", false],
+                "base.html": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/templates/base.html", false],
                 "static": {
                     "images": {
                         "jinja.png": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/images/jinja.png", "binary"],

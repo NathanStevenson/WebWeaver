@@ -12,9 +12,8 @@
                 },
                 "requirements.txt": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/requirements.txt", false],
                 ".gitignore": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/.gitignore", false],
-                "api": {
-                    "__init__.py": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/api/__init__.py.j2", true],
-                    "user_routes.py": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/api/user_routes.py", false]
+                "html_routes": {
+                    "__init__.py": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/html_routes/__init__.py.j2", true]
                 },
                 "db_interface": {
                     "__init__.py": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/db_interface/__init__.py", false],
@@ -31,6 +30,7 @@
 
             "jinja": {
                 "index.html": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/templates/index.html", false],
+                "base.html": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/templates/base.html", false],
                 "static": {
                     "images": {
                         "jinja.png": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/images/jinja.png", "binary"],
@@ -40,6 +40,9 @@
                     },
                     "styles": {
                         "index.css": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/styles/index.css", false]
+                    },
+                    "javascript": {
+                        "index.js": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/styles/index.js", false]
                     }
                 }
             },

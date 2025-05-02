@@ -11,18 +11,10 @@ bp = Blueprint('html_routes', __name__, url_prefix="/")
     # this is the default index route; template served depends on website type + plugins chose; move this to html_routes bp - bp can have same url_prefix if different names
 @bp.route("")
 async def index():
-    tabs, control_tabs = []
-    # tabs which will be displayed either in the nav bar or the side bar   
-    {%- if config['plugins']['hello_world'] +%}
-    tabs += "Overview"
-    {%- if config['plugins']['authentication'] +%}
-    tabs += "Private"
-    control_tabs += ["Login", "Sign Up"]
-    {%- if config['plugins']['dark_mode'] +%}
-    control_tabs += ["Dark Mode"]
-    {%- endif +%}
+    tabs = [{%- if config['plugins']['hello_world'] +%}"Overview"{%- endif +%} {%- if config['plugins']['authentication'] +%}, "Private" {%- endif +%}]
+    control_tabs = [{%- if config['plugins']['authentication'] +%}"Login", "Sign Up" {%- endif +%} {%- if config['plugins']['dark_mode'] +%}, "Dark Mode"{%- endif +%}]
     return await render_template('index.html', backend="{{ config['backend']['name'] }}", frontend="{{ config['frontend']['name'] }}", database="{{ config["database"]["name"] }}", tabs=tabs, control_tabs=control_tabs)
 
 @bp.get('hello_world')
-async def index():
+async def hello_world():
     return await render_template_string("<div>Hello World</div>")
