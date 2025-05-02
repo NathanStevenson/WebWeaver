@@ -15,6 +15,17 @@
 * Websockets
 * Emailing - include email verification before adding user to DB
 * Incorporate Threadpool into the base quart set-up
+* Posts with comments, likes, etc
+* Personal Information Form
+
+## Plugins with Fullstack web templates
+* Have the templates be 'bundles' of plugins:
+* blogging: posting, user login, dark mode
+* message server: emailing, login, websockets
+* shopping site: lists of items, admin dashboard, personal info form, payment and cart
+* etc
+* Users can then get individual plugins or they can bundle their plugins with a full blown working site out of the box which they can customize 
+
 
 * generating configs for specific website types (blogs, hello world, api, user auth, messaging, shopping, payments, websockets/streaming)"
 
