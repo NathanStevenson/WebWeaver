@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebWeaver Hello World Template</title>
+    <!-- Favicon -->
+    <link rel="icon" href="{{ url_for('static', filename='images/webweaver_logo.png') }}" type="image/x-icon">
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/index.css') }}">
+    <!-- Javascript -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/index.js') }}">
+</head>
+<body class="dark-mode">
+    <header>
+        <div id="header">
+            <div id="logo-container">
+                <img src="{{ url_for('static', filename='images/webweaver_logo.png') }}" alt="WebWeaver Logo" id="image-logo">
+                <div class="nav-bar-tab">WebWeaver</div>
+            </div>
+            {% for tab in tabs %}
+                {% if tab == 'Overview' %}
+                    <a class="nav-bar-tab" href="/docs">{{ tab }}</a>
+                {% else %}
+                    <a class="nav-bar-tab" href="/{{ tab }}">{{ tab }}</a>
+                {% endif %}
+            {% endfor %}
+
+            {% if control_tabs != [] %}
+            <div id="control-tab-container">
+                {% for tab in control_tabs %}
+                    {% if tab == 'Sign Up' %}
+                        <a class="nav-bar-tab" href="/sign_up">{{ tab }}</a>
+                    {% elif tab == 'Dark Mode' %}
+                        <button onclick="toggleDarkMode()">&#127769;</button>
+                    {% else %}
+                        <a class="nav-bar-tab" href="/{{ tab }}">{{ tab }}</a>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+            </div>
+        </div>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

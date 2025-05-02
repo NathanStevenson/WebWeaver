@@ -52,8 +52,8 @@
     "backend": { 
         "ip": "127.0.0.1",
         "port": 2121,
-        "api": true,
-        "html_routes": false,
+        "api": false,
+        "html_routes": true,
         "name": "quart_project"
     },
 
@@ -78,7 +78,8 @@
         "custom_auth_api": false,
         "jwt_auth_api": false,
         "google_oauth": true,
-        "apple_oauth": true
+        "apple_oauth": true,
+        "dark_mode": true
     },
 
     "set_up": {

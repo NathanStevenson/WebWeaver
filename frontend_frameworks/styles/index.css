@@ -1,10 +1,16 @@
 /* Tags Styling */
 body {
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    margin: 0px;
+}
+body.dark-mode {
     /* dark mode by default uses this dark gray */
     background-color: #121212;
-    font-family: Roboto, Helvetica, Arial, sans-serif;
     color: white;
-    margin: 0px;
+}
+body.light-mode {
+    background-color: white;
+    color: #121212;
 }
 h2 {
     text-align: center;
@@ -38,6 +44,10 @@ h2 {
     margin-left: 5vw;
 }
 
+#control-tab-container {
+    align-self: flex-end;
+}
+
 /* Class Styling */
 .framework-images {
     width: 15vw; 
@@ -52,7 +62,6 @@ h2 {
     padding: 2vh 1vw;
     border-radius: 10px;
     display: block;
-    color: white;
     text-decoration: none;
 }
 

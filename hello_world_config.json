@@ -50,8 +50,8 @@
     "backend": { 
         "ip": "127.0.0.1",
         "port": 2121,
-        "api": true,
-        "html_routes": false,
+        "api": false,
+        "html_routes": true,
         "name": "quart_project"
     },
 

@@ -1,42 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebWeaver Hello World Template</title>
-    <!-- Favicon -->
-    <link rel="icon" href="{{ url_for('static', filename='images/webweaver_logo.png') }}" type="image/x-icon">
-    <!-- CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/index.css') }}">
-</head>
-<body>
-    <div id="header">
-        <div id="logo-container">
-            <img src="{{ url_for('static', filename='images/webweaver_logo.png') }}" alt="WebWeaver Logo" id="image-logo">
-            <div class="nav-bar-tab">WebWeaver</div>
-        </div>
-        {% for tab in tabs %}
-            {% if tab == 'Overview' %}
-                <a class="nav-bar-tab" href="/docs">{{ tab }}</a>
-            {% else %}
-                <a class="nav-bar-tab" href="/{{ tab }}">{{ tab }}</a>
-            {% endif %}
-        {% endfor %}
-    </div>
 
-    <div id="overview-flexbox">
-        <div>
-            <h2>Database</h2>
-            <img src="{{ url_for('static', filename='images/' + database + '.png') }}" alt="Database Chosen" class="framework-images">
-        </div>
-        <div>
-            <h2>Backend</h2>
-            <img src="{{ url_for('static', filename='images/' + backend + '.png') }}" alt="Backend Chosen" class="framework-images">
-        </div>
-        <div>
-            <h2>Frontend</h2>
-            <img src="{{ url_for('static', filename='images/' + frontend + '.png') }}" alt="Frontend Chosen" class="framework-images">
-        </div>
+
+{% block content %}
+<div id="overview-flexbox">
+    <div>
+        <h2>Database</h2>
+        <img src="{{ url_for('static', filename='images/' + database + '.png') }}" alt="Database Chosen" class="framework-images">
     </div>
-</body>
-</html>
+    <div>
+        <h2>Backend</h2>
+        <img src="{{ url_for('static', filename='images/' + backend + '.png') }}" alt="Backend Chosen" class="framework-images">
+    </div>
+    <div>
+        <h2>Frontend</h2>
+        <img src="{{ url_for('static', filename='images/' + frontend + '.png') }}" alt="Frontend Chosen" class="framework-images">
+    </div>
+</div>
+{% endblock %}
