@@ -11,18 +11,19 @@ from . import auth_utils
 bp = quart.Blueprint('authentication', __name__, url_prefix="/")
 
 # private route which serves /private HTML template; default tab shown on the web - only accessed with successful login
+@bp.get("private")
 @login_required
 async def private_route():
     tabs = [{%- if config['plugins']['hello_world'] +%}"Overview"{%- endif +%}, "Private"]
     control_tabs = ["Login", "Sign Up" {%- if config['plugins']['dark_mode'] +%}, "Dark Mode"{%- endif +%}]
-    return await quart.render_template('private.html', tabs=tabs)
+    return await quart.render_template('private.html', tabs=tabs, control_tabs=control_tabs)
 
 # if you fail a login requirement instead of default 401 unauthorized serve this custom 
 @bp.errorhandler(Unauthorized)
-async def custom_unauthorized_page():
+async def custom_unauthorized_page(error):
     tabs = [{%- if config['plugins']['hello_world'] +%}"Overview"{%- endif +%}, "Private"]
     control_tabs = ["Login", "Sign Up" {%- if config['plugins']['dark_mode'] +%}, "Dark Mode"{%- endif +%}]
-    return await quart.render_template('unauthorized.html', tabs=tabs)
+    return await quart.render_template('unauthorized.html', tabs=tabs, control_tabs=control_tabs)
 
 # serve the sign_up form - also present the option here to Login with Google/Apple/GitHub? - custom login
 @bp.get("sign_up")
@@ -39,9 +40,9 @@ async def login_form():
     return await quart.render_template('login.html', tabs=tabs, control_tabs=control_tabs)
 
 # receives POST request when the user signs up; checks that no other user with that email exists - hashes password and adds it into DB
-@validate_request(schemas.UserSignup)
 # validates the incoming request with pydantic; data will hold the validated json request params
 @bp.post("sign_up")
+@validate_request(schemas.UserSignup)
 async def process_sign_up(data: schemas.UserSignup):
     async with db_interface.create_session() as session:
         user_exists = User.get_user_by_email(session, data.email)
@@ -56,9 +57,9 @@ async def process_sign_up(data: schemas.UserSignup):
             return redirect(url_for('authentication.private'))
 
 # receives POST request when the user signs up; checks that no other user with that email exists - hashes password and adds it into DB
-@validate_request(schemas.UserSignup)
 # validates the incoming request with pydantic; data will hold the validated json request params
 @bp.post("login")
+@validate_request(schemas.UserSignup)
 async def process_login(data: schemas.UserSignup):
     async with db_interface.create_session() as session:
         # check if the user exists

@@ -20,6 +20,11 @@
                     "base_model.py": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/db_interface/base_model.py", false],
                     "user_model.py": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/db_interface/user_model.py", false]
                 },
+                "user_authentication": {
+                    "__init__.py": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/user_authentication/__init__.py.j2", true],
+                    "auth_utils.py": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/user_authentication/auth_utils.py", false],
+                    "schemas.py": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/user_authentication/schemas.py", false]
+                },
                 "__init__.py": ["/home/nathan/Documents/WebWeaver/backend_frameworks/quart/__init__.py", false]
             },  
 
@@ -31,6 +36,10 @@
             "jinja": {
                 "index.html": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/templates/index.html", false],
                 "base.html": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/templates/base.html", false],
+                "login.html": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/templates/login.html", false],
+                "private.html": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/templates/private.html", false],
+                "unauthorized.html": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/templates/unauthorized.html", false],
+                "sign_up.html": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/templates/sign_up.html", false],
                 "static": {
                     "images": {
                         "jinja.png": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/images/jinja.png", "binary"],
@@ -39,7 +48,11 @@
                         "webweaver_logo.png": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/images/webweaver_logo.png", "binary"]
                     },
                     "styles": {
-                        "index.css": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/styles/index.css", false]
+                        "index.css": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/styles/index.css", false],
+                        "login.css": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/styles/login.css", false],
+                        "private.css": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/styles/private.css", false],
+                        "sign_up.css": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/styles/sign_up.css", false],
+                        "unauthorized.css": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/styles/unauthorized.css", false]
                     },
                     "javascript": {
                         "index.js": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/styles/index.js", false]

@@ -1,5 +1,29 @@
 {% extends "base.html" %}
 
-{% block content %}
+{% block head_more %}
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/sign_up.css') }}">
+{% endblock %}
 
+{% block content %}
+<form id="sign-up-container" action="/sign_up" method="post">
+    <div class="form-title">Create Account</div>
+
+    <label class="form-label">Username</label>
+    <input type="text" placeholder="JohnDoe" name="username"/>
+
+    <label class="form-label">Email</label>
+    <input type="email" placeholder="user@email.com" name="email"/>
+
+    <label class="form-label">Password</label>
+    <input type="password" placeholder="10 characters, 1+ lower, upper, specials character" name="password"/>
+
+    <label class="form-label">Re-Enter Password</label>
+    <input type="password" placeholder="Re-enter above password" name="password_verify">
+
+    <button type="submit" id="sign-up-submit-btn">Sign Up</button>
+
+    <hr class="solid">
+    <span>Already have an account? <a href="/login">Login Here</a></span>
+</form>
 {% endblock %}

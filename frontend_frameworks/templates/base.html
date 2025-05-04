@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/index.css') }}">
     <!-- Javascript -->
     <script type="module" src="{{ url_for('static', filename='javascript/index.js') }}"></script>
+    <!-- Extra Content for sub-files -->
+    {% block head_more %}{% endblock %}
 </head>
 <body class="dark-mode">
     <header>
@@ -17,7 +19,7 @@
             <div id="tab-container">
                 <div id="logo-container">
                     <img src="{{ url_for('static', filename='images/webweaver_logo.png') }}" alt="WebWeaver Logo" id="image-logo">
-                    <div class="nav-bar-tab">WebWeaver</div>
+                    <a class="nav-bar-tab" href="/">WebWeaver</a>
                 </div>
                 {% for tab in tabs %}
                     {% if tab == 'Overview' %}

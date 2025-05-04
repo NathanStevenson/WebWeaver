@@ -10,3 +10,4 @@ alembic
 quart-auth
 bcrypt
 pydantic
+pydantic[email]
