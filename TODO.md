@@ -7,6 +7,7 @@
 ## Quart
 * Next Tasks: Add Login / Sign Up / Unauthorized Pages / Private page display username/email; change tabs href to be lower case (90 min)
 * Test new Custom Login to make sure it works; add the bearer mode Quart Auth (120 min)
+* Update the README.md - new info link this file for more work to do + new ideas
 * Implement Google OAuth, Apple OAuth, GitHub OAuth, (look into JWT token support - look into why JWT better than basic Quart Auth - seems like better for scale??) (120 min)
 * Implement a few more useful routes: Forgot password, Change Password, Profile Routes, Editing Profile, Emailing user with 2FA code to verify account before adding users (120 min)
 

@@ -23,19 +23,17 @@
                     {% if tab == 'Overview' %}
                         <a class="nav-bar-tab" href="/docs">{{ tab }}</a>
                     {% else %}
-                        <a class="nav-bar-tab" href="/{{ tab }}">{{ tab }}</a>
+                        <a class="nav-bar-tab" href="/{{ tab | lower | replace(' ', '_') }}">{{ tab }}</a>
                     {% endif %}
                 {% endfor %}
             </div>
             {% if control_tabs != [] %}
             <div id="control-tab-container">
                 {% for tab in control_tabs %}
-                    {% if tab == 'Sign Up' %}
-                        <a class="nav-bar-tab" href="/sign_up">{{ tab }}</a>
-                    {% elif tab == 'Dark Mode' %}
+                    {% if tab == 'Dark Mode' %}
                         <button id="dark-mode-button">&#127769;</button>
                     {% else %}
-                        <a class="nav-bar-tab" href="/{{ tab }}">{{ tab }}</a>
+                        <a class="nav-bar-tab" href="/{{ tab | lower | replace(' ', '_') }}">{{ tab }}</a>
                     {% endif %}
                 {% endfor %}
             {% endif %}

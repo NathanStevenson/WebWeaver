@@ -12,6 +12,7 @@ from quart_project import html_routes
 {%- if config['plugins']['authentication'] +%}
 from quart_auth import QuartAuth
 from quart_project.secrets.secrets import app_secret_key
+from quart_project import user_authentication
 {%- endif +%}
 
 # returns a fully configured Quart application
@@ -34,6 +35,9 @@ def create_app(webweaver_config=None):
     {%- endif +%}
     {%- if config['backend']['html_routes'] +%}
     app.register_blueprint(html_routes.bp)
+    {%- endif +%}
+    {%- if config['plugins']['authentication'] +%}
+    app.register_blueprint(user_authentication.bp)
     {%- endif +%}
 
     # this config file is used by WebWeaver to ensure your web app does exactly what you specified
