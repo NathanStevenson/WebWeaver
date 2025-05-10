@@ -5,7 +5,9 @@
 * Later on we can have this also set up Docker, testing scripts, custom CI/CD pipelines etc
 
 ## Quart
-* Review CSS understand. Nice 403 unauth and private page. Convert Form to use Javascript to send over the login. Test user auth. Bring all changed files over to the builder and commit (90 min)
+* Nice 403 page; change private to profile and have a way for user to access profile, delete account, edit profile, etc. 
+* Bug Fix the login page; display the error messaging returned by the server for sign up with non unique emails or login without matching passwords etc
+
 * Implement Google OAuth, Apple OAuth, GitHub OAuth (120 min)
 * Update the README.md - new info link this file for more work to do + new ideas
 * Test new Custom Login to make sure it works; add the bearer mode Quart Auth (120 min)
