@@ -5,11 +5,11 @@
 * Later on we can have this also set up Docker, testing scripts, custom CI/CD pipelines etc
 
 ## Quart
-* Next Tasks: Add Login / Sign Up / Unauthorized Pages / Private page display username/email; change tabs href to be lower case (90 min)
-* Test new Custom Login to make sure it works; add the bearer mode Quart Auth (120 min)
+* Review CSS understand. Nice 403 unauth and private page. Convert Form to use Javascript to send over the login. Test user auth. Bring all changed files over to the builder and commit (90 min)
+* Implement Google OAuth, Apple OAuth, GitHub OAuth (120 min)
 * Update the README.md - new info link this file for more work to do + new ideas
-* Implement Google OAuth, Apple OAuth, GitHub OAuth, (look into JWT token support - look into why JWT better than basic Quart Auth - seems like better for scale??) (120 min)
-* Implement a few more useful routes: Forgot password, Change Password, Profile Routes, Editing Profile, Emailing user with 2FA code to verify account before adding users (120 min)
+* Test new Custom Login to make sure it works; add the bearer mode Quart Auth (120 min)
+* Implement a few more useful routes: Forgot password, Change Password, Profile Routes, Editing Profile, Emailing user with 2FA code to verify account before adding users, Delete Profile (120 min)
 
 * Payment and cart
 * Admin Dashboard + RBAC

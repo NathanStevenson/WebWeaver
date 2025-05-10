@@ -1,22 +1,55 @@
+/* Color Styling Variables */
+:root {
+    --bg-color: #f3f4f6;
+    --text-color: #111827;
+    --form-bg: #ffffff;
+    --input-bg: #ffffff;
+    --input-border: #d1d5db;
+    --input-focus: #3b82f6;
+    --divider-color: #e5e7eb;
+    --oauth-hover: #f9fafb;
+    --btn-primary: #3b82f6;
+    --btn-primary-hover: #2563eb;
+}
+/* change for dark mode */
+body.dark {
+    --bg-color: #111827;
+    --text-color: #f9fafb;
+    --form-bg: #1f2937;
+    --input-bg: #374151;
+    --input-border: #4b5563;
+    --input-focus: #60a5fa;
+    --divider-color: #374151;
+    --oauth-hover: #1f2937;
+    --btn-primary: #3b82f6;
+    --btn-primary-hover: #2563eb;
+  }
+
 /* Tags Styling */
-html, body {
-    font-family: Roboto, Helvetica, Arial, sans-serif;
-    height: 100%;
-    width: 100%;
-    padding: 0;
+* {
+    box-sizing: border-box; /* border box means that padding + border included in width + height */
+    font-family: 'Inter', sans-serif;
+}
+
+body {
     margin: 0;
+    background: var(--bg-color);
+    min-height: 100vh;
+    color: var(--text-color);
+    transition: background 0.3s, color 0.3s;
 }
-body.dark-mode {
-    /* dark mode by default uses this dark gray */
-    background-color: #121212;
-    color: white;
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 90px); /* max height minus height of header */
 }
-body.light-mode {
-    background-color: white;
-    color: #121212;
-}
+
 h2 {
     text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
 }
 
 /* ID Styling */
@@ -25,15 +58,14 @@ h2 {
     column-gap: 10%;
     justify-content: center;
     width: 100vw;
-    margin-top: 10vh;
 }
 
 #header{
     display: flex; 
     justify-content: space-between;
-    align-items: center;
     width: 100vw;
     background-color: black;
+    height: 90px;
 }
 
 #image-logo {

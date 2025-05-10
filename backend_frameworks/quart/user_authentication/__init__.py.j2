@@ -1,7 +1,7 @@
 import quart
 from quart import redirect, url_for
 from quart_schema import validate_request
-from quart_auth import login_required, login_user, logout_user, Unauthorized, AuthUser
+from quart_auth import login_required, login_user, logout_user, Unauthorized, AuthUser, current_user
 
 from ..db_interface.user_model import User
 from ..db_interface import db_interface
@@ -16,7 +16,9 @@ bp = quart.Blueprint('authentication', __name__, url_prefix="/")
 async def private_route():
     tabs = [{%- if config['plugins']['hello_world'] +%}"Overview"{%- endif +%}, "Private"]
     control_tabs = ["Login", "Sign Up" {%- if config['plugins']['dark_mode'] +%}, "Dark Mode"{%- endif +%}]
-    return await quart.render_template('private.html', tabs=tabs, control_tabs=control_tabs)
+    async with db_interface.create_session() as session:
+        logged_in_user_info = await User.get_by_id(session, int(current_user.auth_id))
+    return await quart.render_template('private.html', tabs=tabs, control_tabs=control_tabs, logged_in_user_info=logged_in_user_info)
 
 # if you fail a login requirement instead of default 401 unauthorized serve this custom 
 @bp.errorhandler(Unauthorized)
@@ -45,16 +47,20 @@ async def login_form():
 @validate_request(schemas.UserSignup)
 async def process_sign_up(data: schemas.UserSignup):
     async with db_interface.create_session() as session:
-        user_exists = User.get_user_by_email(session, data.email)
+        user_exists = await User.get_user_by_email(session, data.email)
         if user_exists is not None:
             return {"error_msg": f"Email already exists for {data.email}. Try logging in or signing up with another email"}
         else:
-            # salt + hash the incoming password via bcrypt; create a new user; add it to SQLAlchemy session; put it in DB
-            hashed_password = auth_utils.hash_password(data.password)
-            new_user = User(email=data.email, hashed_password=hashed_password)
-            User.add(session, new_user)
-            # redirect user to the private route which reflects their email back to them if just basic auth is wanted; in future have 2FA to verify their email is right before adding user to the DB of our site
-            return redirect(url_for('authentication.private'))
+            if data.password == data.password_verify:
+                # salt + hash the incoming password via bcrypt; create a new user; add it to SQLAlchemy session; put it in DB
+                hashed_password = auth_utils.hash_password(data.password)
+                new_user = User(email=data.email, hashed_password=hashed_password)
+                await User.add(session, new_user)
+                login_user(AuthUser(str(new_user.id)))
+                # redirect user to the private route which reflects their email back to them if just basic auth is wanted; in future have 2FA to verify their email is right before adding user to the DB of our site
+                return redirect(url_for('authentication.private_route'))
+            else:
+                return {"error_msg": f"Passwords do not match"}
 
 # receives POST request when the user signs up; checks that no other user with that email exists - hashes password and adds it into DB
 # validates the incoming request with pydantic; data will hold the validated json request params
@@ -63,11 +69,11 @@ async def process_sign_up(data: schemas.UserSignup):
 async def process_login(data: schemas.UserSignup):
     async with db_interface.create_session() as session:
         # check if the user exists
-        user = User.get_user_by_email(session, data.email)
+        user = await User.get_user_by_email(session, data.email)
         # verify that the password matches the hashed password
         if user and auth_utils.verify_password(data.password, user.hashed_password):
             login_user(AuthUser(str(user.id)))  # quart uses string as AuthUser - access ID via current_user.auth_id, current_user.is_authenticated bool for logged in or out user
-            return redirect(url_for('authentication.private'))
+            return redirect(url_for('authentication.private_route'))
         else:
             return {"error_msg": "Unsuccessful login!"}
         

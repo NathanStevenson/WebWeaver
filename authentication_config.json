@@ -40,6 +40,7 @@
                 "private.html": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/templates/private.html", false],
                 "unauthorized.html": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/templates/unauthorized.html", false],
                 "sign_up.html": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/templates/sign_up.html", false],
+                "overview.html": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/templates/overview.html", false],
                 "static": {
                     "images": {
                         "jinja.png": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/images/jinja.png", "binary"],
@@ -49,13 +50,14 @@
                     },
                     "styles": {
                         "index.css": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/styles/index.css", false],
-                        "login.css": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/styles/login.css", false],
+                        "authentication.css": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/styles/authentication.css", false],
                         "private.css": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/styles/private.css", false],
-                        "sign_up.css": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/styles/sign_up.css", false],
-                        "unauthorized.css": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/styles/unauthorized.css", false]
+                        "unauthorized.css": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/styles/unauthorized.css", false],
+                        "overview.css": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/styles/overview.css", false]
                     },
                     "javascript": {
-                        "index.js": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/styles/index.js", false]
+                        "index.js": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/styles/index.js", false],
+                        "authentication.js": ["/home/nathan/Documents/WebWeaver/frontend_frameworks/styles/authentication.js", false]
                     }
                 }
             },

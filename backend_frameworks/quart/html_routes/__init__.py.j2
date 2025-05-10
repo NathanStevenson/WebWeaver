@@ -15,6 +15,12 @@ async def index():
     control_tabs = [{%- if config['plugins']['authentication'] +%}"Login", "Sign Up" {%- endif +%} {%- if config['plugins']['dark_mode'] +%}, "Dark Mode"{%- endif +%}]
     return await render_template('index.html', backend="{{ config['backend']['name'] }}", frontend="{{ config['frontend']['name'] }}", database="{{ config["database"]["name"] }}", tabs=tabs, control_tabs=control_tabs)
 
+@bp.route("overview")
+async def overview():
+    tabs = [{%- if config['plugins']['hello_world'] +%}"Overview"{%- endif +%} {%- if config['plugins']['authentication'] +%}, "Private" {%- endif +%}]
+    control_tabs = [{%- if config['plugins']['authentication'] +%}"Login", "Sign Up" {%- endif +%} {%- if config['plugins']['dark_mode'] +%}, "Dark Mode"{%- endif +%}]
+    return await render_template('overview.html', backend="{{ config['backend']['name'] }}", frontend="{{ config['frontend']['name'] }}", database="{{ config["database"]["name"] }}", tabs=tabs, control_tabs=control_tabs)
+
 @bp.get('hello_world')
 async def hello_world():
     return await render_template_string("<div>Hello World</div>")

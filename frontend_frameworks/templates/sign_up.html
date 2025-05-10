@@ -2,28 +2,37 @@
 
 {% block head_more %}
     <!-- CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/sign_up.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/authentication.css') }}">
+    <!-- Javascript -->
+    <script type="module" src="{{ url_for('static', filename='javascript/authentication.js') }}"></script>
 {% endblock %}
 
 {% block content %}
-<form id="sign-up-container" action="/sign_up" method="post">
-    <div class="form-title">Create Account</div>
 
-    <label class="form-label">Username</label>
-    <input type="text" placeholder="JohnDoe" name="username"/>
+<div class="login-container">
+    <h2>Create your account</h2>
+    <form id="sign-in-form">
+        <div class="form-group">
+            <label class="form-label">Username</label>
+            <input type="text" id="text" name="username" placeholder="JohnDoe21" required />
+        </div>
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required />
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="••••••••" required />
+        </div>
+        <div class="form-group">
+            <label for="password">Re-Enter Password</label>
+            <input type="password" id="re-password" name="password_verify" placeholder="••••••••" required />
+        </div>
+        <button type="submit" class="btn-primary">Sign Up</button>
+    </form>
 
-    <label class="form-label">Email</label>
-    <input type="email" placeholder="user@email.com" name="email"/>
-
-    <label class="form-label">Password</label>
-    <input type="password" placeholder="10 characters, 1+ lower, upper, specials character" name="password"/>
-
-    <label class="form-label">Re-Enter Password</label>
-    <input type="password" placeholder="Re-enter above password" name="password_verify">
-
-    <button type="submit" id="sign-up-submit-btn">Sign Up</button>
-
-    <hr class="solid">
+    <div class="divider"></div>
     <span>Already have an account? <a href="/login">Login Here</a></span>
-</form>
+
+</div>
 {% endblock %}

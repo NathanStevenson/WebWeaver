@@ -16,6 +16,8 @@ class DatabaseInterface:
     # when initializing the db create all the tables which inherit from declarative_base; if the db already exists use that and do not recreate it
     async def init_db(self):
         async with self.engine.begin() as connection:
+            # for now in dev do this every restart of the webserver will drop and create new DB tables - eventually get alembic working for DB migrations
+            await connection.run_sync(Base.metadata.drop_all)
             await connection.run_sync(Base.metadata.create_all)
 
     # close out the engine, close down all connections, called when shutting down the server

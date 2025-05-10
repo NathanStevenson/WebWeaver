@@ -13,7 +13,7 @@
     <!-- Extra Content for sub-files -->
     {% block head_more %}{% endblock %}
 </head>
-<body class="dark-mode">
+<body class="dark">
     <header>
         <div id="header">
             <div id="tab-container">
@@ -22,11 +22,7 @@
                     <a class="nav-bar-tab" href="/">WebWeaver</a>
                 </div>
                 {% for tab in tabs %}
-                    {% if tab == 'Overview' %}
-                        <a class="nav-bar-tab" href="/docs">{{ tab }}</a>
-                    {% else %}
-                        <a class="nav-bar-tab" href="/{{ tab | lower | replace(' ', '_') }}">{{ tab }}</a>
-                    {% endif %}
+                    <a class="nav-bar-tab" href="/{{ tab | lower | replace(' ', '_') }}">{{ tab }}</a>
                 {% endfor %}
             </div>
             {% if control_tabs != [] %}
