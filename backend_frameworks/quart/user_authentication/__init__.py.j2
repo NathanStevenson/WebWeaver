@@ -17,7 +17,7 @@ control_tabs = ["Login", "Sign Up" {%- if config['plugins']['dark_mode'] +%}, "D
 @bp.get("private")
 @login_required
 async def private_route():
-    if current_user.is_authenticated:
+    if await current_user.is_authenticated:
         control_tabs = ["Logout" {%- if config['plugins']['dark_mode'] +%}, "Dark Mode"{%- endif +%}]
     async with db_interface.create_session() as session:
         logged_in_user_info = await User.get_by_id(session, int(current_user.auth_id))
@@ -26,21 +26,21 @@ async def private_route():
 # if you fail a login requirement instead of default 401 unauthorized serve this custom 
 @bp.errorhandler(Unauthorized)
 async def custom_unauthorized_page(error):
-    if current_user.is_authenticated:
+    if await current_user.is_authenticated:
         control_tabs = ["Logout" {%- if config['plugins']['dark_mode'] +%}, "Dark Mode"{%- endif +%}]
     return await quart.render_template('unauthorized.html', tabs=tabs, control_tabs=control_tabs)
 
 # serve the sign_up form - also present the option here to Login with Google/Apple/GitHub? - custom login
 @bp.get("sign_up")
 async def sign_up_form():
-    if current_user.is_authenticated:
+    if await current_user.is_authenticated:
         control_tabs = ["Logout" {%- if config['plugins']['dark_mode'] +%}, "Dark Mode"{%- endif +%}]
     return await quart.render_template('sign_up.html', tabs=tabs, control_tabs=control_tabs)
 
 # serve the login form
 @bp.get("login")
 async def login_form():
-    if current_user.is_authenticated:
+    if await current_user.is_authenticated:
         control_tabs = ["Logout" {%- if config['plugins']['dark_mode'] +%}, "Dark Mode"{%- endif +%}]
     return await quart.render_template('login.html', tabs=tabs, control_tabs=control_tabs)
 
