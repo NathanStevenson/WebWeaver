@@ -1,4 +1,5 @@
 from quart import Blueprint, render_template, render_template_string
+from quart_auth import current_user
 
 bp = Blueprint('html_routes', __name__, url_prefix="/")
 
@@ -7,18 +8,20 @@ bp = Blueprint('html_routes', __name__, url_prefix="/")
 # Register all related api blueprints
 
 # All routes served under "/"
+tabs = [{%- if config['plugins']['hello_world'] +%}"Overview"{%- endif +%} {%- if config['plugins']['authentication'] +%}, "Private" {%- endif +%}]
+control_tabs = [{%- if config['plugins']['authentication'] +%}"Login", "Sign Up" {%- endif +%} {%- if config['plugins']['dark_mode'] +%}, "Dark Mode"{%- endif +%}]
 
-    # this is the default index route; template served depends on website type + plugins chose; move this to html_routes bp - bp can have same url_prefix if different names
+# this is the default index route; template served depends on website type + plugins chose; move this to html_routes bp - bp can have same url_prefix if different names
 @bp.route("")
 async def index():
-    tabs = [{%- if config['plugins']['hello_world'] +%}"Overview"{%- endif +%} {%- if config['plugins']['authentication'] +%}, "Private" {%- endif +%}]
-    control_tabs = [{%- if config['plugins']['authentication'] +%}"Login", "Sign Up" {%- endif +%} {%- if config['plugins']['dark_mode'] +%}, "Dark Mode"{%- endif +%}]
+    if current_user.is_authenticated:
+        control_tabs = [{%- if config['plugins']['authentication'] +%}"Logout" {%- endif +%} {%- if config['plugins']['dark_mode'] +%}, "Dark Mode"{%- endif +%}]
     return await render_template('index.html', backend="{{ config['backend']['name'] }}", frontend="{{ config['frontend']['name'] }}", database="{{ config["database"]["name"] }}", tabs=tabs, control_tabs=control_tabs)
 
 @bp.route("overview")
 async def overview():
-    tabs = [{%- if config['plugins']['hello_world'] +%}"Overview"{%- endif +%} {%- if config['plugins']['authentication'] +%}, "Private" {%- endif +%}]
-    control_tabs = [{%- if config['plugins']['authentication'] +%}"Login", "Sign Up" {%- endif +%} {%- if config['plugins']['dark_mode'] +%}, "Dark Mode"{%- endif +%}]
+    if current_user.is_authenticated:
+        control_tabs = [{%- if config['plugins']['authentication'] +%}"Logout" {%- endif +%} {%- if config['plugins']['dark_mode'] +%}, "Dark Mode"{%- endif +%}]
     return await render_template('overview.html', backend="{{ config['backend']['name'] }}", frontend="{{ config['frontend']['name'] }}", database="{{ config["database"]["name"] }}", tabs=tabs, control_tabs=control_tabs)
 
 @bp.get('hello_world')
